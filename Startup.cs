@@ -6,9 +6,9 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace ParcelApp
 {
-    private class Startup
+    public class Startup
     {
-        private Startup(IHostingEnvironment env)
+        public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
@@ -16,14 +16,14 @@ namespace ParcelApp
             Configuration = builder.Build();
         }
 
-        private IConfigurationRoot Configuration { get; }
+        public IConfigurationRoot Configuration { get; }
 
-        private void ConfigureServices(IServiceCollection services)
+        public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
         }
 
-        private void Configure(IApplicationBuilder app)
+        public void Configure(IApplicationBuilder app)
         {
             app.UseMvc(routes =>
             {

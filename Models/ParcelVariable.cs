@@ -1,4 +1,4 @@
-namespace Parcel.Models
+namespace ParcelApp.Models
 {
   public class Parcel
   {
@@ -6,12 +6,16 @@ namespace Parcel.Models
     private string _Length;
     private string _Width;
     private string _Weight;
-    private string _Volume;
-    private string _Price;
+    private int Height;
+    private int Length;
+    private int Width;
+    private int Weight;
+    private int finalVolume;
+    private int finalPrice;
 
     public string GetHeight()
     {
-      return _Height
+      return _Height;
     }
     public void SetHeight(string newHeight)
     {
@@ -19,7 +23,7 @@ namespace Parcel.Models
     }
     public string GetLength()
     {
-      return _Length
+      return _Length;
     }
     public void SetLength(string newLength)
     {
@@ -27,7 +31,7 @@ namespace Parcel.Models
     }
     public string GetWidth()
     {
-      return _Width
+      return _Width;
     }
     public void SetWidth(string newWidth)
     {
@@ -35,7 +39,7 @@ namespace Parcel.Models
     }
     public string GetWeight()
     {
-      return _Weight
+      return _Weight;
     }
     public void SetWeight(string newWeight)
     {
@@ -43,20 +47,27 @@ namespace Parcel.Models
     }
     public string GetVolume()
     {
-      return _Volume
+      Height = int.Parse(_Height);
+      Length = int.Parse(_Length);
+      Width = int.Parse(_Width);
+
+      finalVolume = Height * Width * Length;
+      return finalVolume;
     }
-    public void SetVolume(string newVolume)
-    {
-      _Volume = newVolume;
-    }
+    // public void SetVolume(string newVolume)
+    // {
+    //   Volume = newVolume;
+    // }
     public string GetPrice()
     {
-      return _Price
+      Weight = int.Parse(_Weight);
+      finalPrice = (finalVolume * Weight) / 4;
+      return finalPrice;
     }
-    public void SetPrice(string newPrice)
-    {
-      _Price = newPrice;
-    }
+    // public void SetPrice(string newPrice)
+    // {
+    //   Price = newPrice;
+    // }
   }
 
 }
