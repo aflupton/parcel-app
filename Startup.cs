@@ -1,0 +1,40 @@
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+
+namespace ParcelApp
+{
+    private class Startup
+    {
+        private Startup(IHostingEnvironment env)
+        {
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
+                .AddEnvironmentVariables();
+            Configuration = builder.Build();
+        }
+
+        private IConfigurationRoot Configuration { get; }
+
+        private void ConfigureServices(IServiceCollection services)
+        {
+            services.AddMvc();
+        }
+
+        private void Configure(IApplicationBuilder app)
+        {
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
+            });
+            app.Run(async (context) =>
+            {
+                await context.Response.WriteAsync("Parcels!");
+            });
+        }
+    }
+}
