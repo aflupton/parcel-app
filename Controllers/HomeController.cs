@@ -23,7 +23,8 @@ namespace ParcelApp.Controllers
         int validWidth = int.Parse(inputWidth);
         int validWeight = int.Parse(inputWeight);
 
-        if (validHeight > 0 && validLength > 0 && validWidth > 0 && validWeight > 0) {
+        if (validHeight > 0 && validLength > 0 && validWidth > 0 && validWeight > 0)
+        {
           Parcel newParcel = new Parcel();
           newParcel.SetHeight(Request.Query["height"]);
           newParcel.SetLength(Request.Query["length"]);
@@ -33,16 +34,11 @@ namespace ParcelApp.Controllers
           // newParcel.SetPrice();
           return View("Quote", newParcel);
           // return View("Quote", newParcel.SetPrice);
-
-        } else {
+        }
+        else
+        {
           return View("Form");
         }
-
-
-        // string inputVolume = newParcel.SetVolume(RequestQuery["volume"]);
-
-
-
       }
     }
 }

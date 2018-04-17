@@ -45,7 +45,7 @@ namespace ParcelApp.Models
     {
       _Weight = newWeight;
     }
-    public string GetVolume()
+    public int GetVolume()
     {
       Height = int.Parse(_Height);
       Length = int.Parse(_Length);
@@ -58,7 +58,7 @@ namespace ParcelApp.Models
     // {
     //   Volume = newVolume;
     // }
-    public string GetPrice()
+    public int GetPrice()
     {
       Weight = int.Parse(_Weight);
       finalPrice = (finalVolume * Weight) / 4;
